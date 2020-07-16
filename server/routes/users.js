@@ -1,41 +1,32 @@
 const express       = require('express');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
-const UserObj = require('../schema/User')
+const {UserObj, EmptyUser} = require('../schema/User')
 const { users } = require('../data-files/usersDB');
 const {getUserByEmail} = require('../lib/util/helper')
 
-const emptyUser = {
-  id: undefined,
-  email: undefined,
-  password: undefined,
-  name:undefined,
-  avatars:undefined,
-  handle:undefined
-}
-
+//GET THE HOMEPAGE
 router.get('/twitter', (req, res) => {
   const user = users[req.session.user]
   if(user){
     res.render('index',{user:user})
   }else{
+    const emptyUser = new EmptyUser
   res.render('index',{user:emptyUser})
   }
 })
 
-router.get('/registration', (req, res) => {
-  const user = users[req.session.user]
-  res.render('registration_form', {user: user, message:undefined})
-})
-
-router.get('/login', (req, res) => {
-  res.render('login_page',{message:undefined})
-})
-
+//GATE PAGE. WILL BE USED AGAINST UNLOGGED USERS
 router.get('/gate', (req, res) => {
   res.render('gate_page')
 })
 
+//GET LOGIN FORM
+router.get('/login', (req, res) => {
+  res.render('login_page',{message:undefined})
+})
+
+//LOGIN ADD COOKIES
 router.post('/login', (req, res) => {
   const { password, email } = req.body;
   const user = getUserByEmail(email, users);
@@ -51,16 +42,24 @@ router.post('/login', (req, res) => {
   res.redirect('/twitter');
 })
 
+//LOGOUT REMOVE COOKIES
 router.post('/logout', (req, res) => {
   req.session = null
   res.redirect('/login')
 })
 
+//GET REGISTRATION FORM
+router.get('/registration', (req, res) => {
+  const user = users[req.session.user]
+  res.render('registration_page', {user: user, message:undefined})
+})
+
+//REGISTER = CREATE A NEW USER
 router.post('/user', (req, res) => {
   const { email, password, userName } = req.body;
   const existingUser = getUserByEmail(email, users)
   if(existingUser){
-    res.render('registration_form', {message:'Sorry this user already exists.'})
+    res.render('registration_page', {message:'Sorry this user already exists.'})
   }else{
   const user = new UserObj(email, password, userName);
   users[user.id] = user

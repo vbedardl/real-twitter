@@ -21,4 +21,15 @@ class UserObj {
     this.avatars = avatars[Math.floor(Math.random()*avatars.length)]
   }
 }
-module.exports = UserObj;
+
+class EmptyUser {
+  constructor(){
+  id = undefined,
+  email = undefined,
+  password = undefined,
+  name = undefined,
+  avatars = undefined,
+  handle = undefined
+  }
+} 
+module.exports = {UserObj, EmptyUser };
