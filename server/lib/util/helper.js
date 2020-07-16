@@ -1,3 +1,4 @@
+
 const generateRandomString = function(num) {
   const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let randomStr = '';
@@ -12,4 +13,13 @@ const getUserByEmail = function(email, database) {
   return database[user];
 };
 
-module.exports = { generateRandomString, getUserByEmail }
+const getUserById = function(id, database) {
+  const user = Object.keys(database).filter(user => database[user].id === id);
+  return database[user];
+};
+
+const getTweetById = function(tweetId, db){
+  const tweet = Object.keys(db.tweets).filter(tweet => db.tweets[tweet].id === tweetId)
+  return db.tweets[tweet]
+}
+module.exports = { generateRandomString, getUserByEmail, getTweetById, getUserById }

@@ -3,7 +3,7 @@ const router  = express.Router();
 const bcrypt = require('bcrypt');
 const {UserObj, EmptyUser} = require('../schema/User')
 const { users } = require('../data-files/usersDB');
-const {getUserByEmail} = require('../lib/util/helper')
+const {getUserByEmail, getUserById} = require('../lib/util/helper')
 
 //GET THE HOMEPAGE
 router.get('/twitter', (req, res) => {
@@ -67,6 +67,14 @@ router.post('/user', (req, res) => {
   req.session.user = user.id
   res.redirect('/twitter')
   }
+})
+
+//FOLLOW NEW USER
+router.post('/following/:id', (req, res) => {
+  const user = getUserById(req.session.user, users)
+  const target = getUserById(req.params, users)
+  user.follows(target)
+  res.status(201).send();
 })
 
 

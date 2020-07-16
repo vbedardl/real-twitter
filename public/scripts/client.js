@@ -138,9 +138,10 @@ const escape =  function(str) {
 const createTweetElement = function(tweet){
   const { user, content, created_at } = tweet
   const $tweet = `
-    <article>
+  <form method="GET" action="/tweets/${content.id}">
+    <article id="${content.id}" onclick="javascript:this.parentNode.submit();">
     <div class="buble">
-      <img height="64px"src="${user.avatars}">
+      <img style="border-radius:50px;" height="64px"src="${user.avatars}">
     </div>
     <div class="main">
       <div class="header">
@@ -161,7 +162,8 @@ const createTweetElement = function(tweet){
         </div>
       </div>
     </div>
-    </article>`
+    </article>
+    </form>`
   return $tweet
 }
 

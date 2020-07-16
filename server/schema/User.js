@@ -9,27 +9,33 @@ class UserObj {
     this.email = email,
     this.password = bcrypt.hashSync(password, 10),
     this.name = name,
-    this.avatars = "https://i.imgur.com/73hZDYK.png",
+    this.avatars = "https://via.placeholder.com/100",
     this.handle = `@${name.split(' ')[1].substring(0,3)}${name.split(' ')[0][0]}`,
     this.tweets = [],
-    this.likedTweets = []
+    this.likedTweets = [],
+    this.follows = []
+    this.createAt = Date.now(),
+    this.location = undefined
   }
   addTweet(tweet){
     this.tweets.push(tweet)
   }
   addAvatars(){
-    this.avatars = avatars[Math.floor(Math.random()*avatars.length)]
+    this.avatars = `https://via.placeholder.com/150?text=${this.name[0]}`
+  }
+  startFollows(target){
+    this.follows.push(target)
   }
 }
 
 class EmptyUser {
   constructor(){
-  id = undefined,
-  email = undefined,
-  password = undefined,
-  name = undefined,
-  avatars = undefined,
-  handle = undefined
+  this.id = undefined,
+  this.email = undefined,
+  this.password = undefined,
+  this.name = undefined,
+  this.avatars = undefined,
+  this.handle = undefined
   }
 } 
 module.exports = {UserObj, EmptyUser };
