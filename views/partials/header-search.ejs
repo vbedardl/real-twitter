@@ -1,0 +1,26 @@
+<div id="header-search">
+  <div id="search-bar">
+    <div class="logo"> Tweet</div>
+    <form method="POST" action='/search' id="searchBar" class="search">
+      <input type="text" placeholder="Search Bar">
+      <button type="submit" id="searchEngine"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+    <div class="settings">
+      <i class="fa fa-ellipsis-h settingss" aria-hidden="true"></i>
+      <% if(user.id){%>
+      <form class="menu hidden" method="POST" action="/logout">
+        <button type="submit">Logout</button>
+      </form>
+      <%}%>
+    </div>
+  </div>
+  <div id="topics">
+    <ul>
+      <li class="selected-topic">For you</li>
+      <li>Trending</li>
+      <li>News</li>
+      <li>Sport</li>
+      <li>Fun</li>
+    </ul>
+  </div>
+</div>

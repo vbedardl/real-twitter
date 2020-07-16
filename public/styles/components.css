@@ -1,0 +1,191 @@
+#footer-connection {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.body-center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gate-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer-connection button, #gate-page button {
+  height: 2em;
+  width: 90%;
+  border-radius: 20px;
+  margin: 1em 0.5em;
+  font-size: 2em;
+}
+#footer-connection .login, #gate-page .login {
+  background-color: white;
+  border: 1px solid blueviolet;
+  color: blueviolet;
+}
+#footer-connection .login:hover, #gate-page .login:hover {
+  cursor: pointer;
+  background-color: blueviolet;
+  border: 1px solid white;
+  color: white;
+}
+#footer-connection .signup, #gate-page .signup {
+  background-color: blueviolet;
+  color: white;
+  border: 1px solid white;
+}
+#footer-connection .signup:hover, #gate-page .signup:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid blueviolet;
+  color: blueviolet;
+}
+
+#footer-connected {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  border-top: 1px solid grey;
+  font-size: 2em;
+  text-align: center;
+}
+#footer-connected ul {
+  display: flex;
+  padding: 0;
+  margin: 0.5em 0.5em;
+}
+#footer-connected ul li {
+  list-style: none;
+  width: 25%;
+}
+#footer-connected ul li:hover {
+  cursor: pointer;
+  height: 100%;
+  color: blue;
+  list-style: none;
+  width: 25%;
+}
+
+#header-search {
+  line-height: 4em;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  border-bottom: 1px solid grey;
+}
+#header-search #search-bar {
+  display: flex;
+  background-color: white;
+  font-size: 2em;
+}
+#header-search #search-bar .logo {
+  width: 25%;
+  font-family: "Bungee", sans-serif;
+  font-display: swap;
+}
+#header-search #search-bar .search {
+  width: 60%;
+}
+#header-search #search-bar .search :first-child {
+  width: 80%;
+  background-color: #f5f5f5cb;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+#header-search #search-bar .settings {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#topics {
+  background-color: white;
+  font-size: 1.5em;
+  text-align: center;
+}
+#topics ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+#topics ul li {
+  list-style: none;
+  width: 20%;
+}
+#topics ul li:hover {
+  list-style: none;
+  width: 20%;
+  height: 100%;
+  background-color: cornsilk;
+  cursor: pointer;
+}
+
+.selected-topic {
+  border-bottom: 2px solid blue;
+  color: blue;
+}
+
+#write-tweet {
+  border-radius: 50px;
+  background-color: blue;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 3em 2em;
+  width: 2em;
+  height: 2em;
+  font-size: 2em;
+}
+#write-tweet:hover {
+  background-color: cornflowerblue;
+  cursor: pointer;
+}
+
+.settings {
+  cursor: pointer;
+}
+
+#error-message {
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+
+.hidden {
+  display: none;
+}
+
+#goUp {
+  display: none;
+  position: fixed;
+  margin: 2em;
+  width: 4em;
+  height: 4em;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #3d3d86;
+  color: #FFFFFF;
+}
+#goUp:hover {
+  background-color: #b2b5ca;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=components.css.map */

@@ -1,0 +1,205 @@
+@use 'branding';
+
+#footer-connection{
+    width:100%;
+    position: fixed;
+    bottom:0;
+    display: flex;
+    justify-content: center;
+}
+.body-center{
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#gate-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#footer-connection, #gate-page{
+  button{
+    height:2em;
+    width:90%;
+    border-radius: 20px;
+    margin:1em 0.5em;
+    font-size: 2em;
+  }
+
+  .login{
+    background-color:white;
+    border:1px solid blueviolet;
+    color:blueviolet;
+    &:hover{
+      cursor: pointer;
+      background-color:blueviolet;
+      border:1px solid white;
+      color:white;
+    }
+  }
+  .signup{
+    background-color:blueviolet;
+    color:white;
+    border:1px solid white;
+    &:hover{
+      cursor: pointer;
+      background-color:white;
+      border:1px solid blueviolet;
+      color:blueviolet;
+    }
+  }
+}
+
+#footer-connected{
+  position: fixed;
+  bottom:0;
+  width:100%;
+  background-color: white;
+  z-index:1;
+  border-top:1px solid grey;
+  font-size: 2em;
+  text-align:center;
+
+  ul{
+    display: flex;
+    padding: 0;
+    margin:0.5em 0.5em;
+
+    li{
+      list-style:none;
+      width:25%;
+      &:hover{
+        cursor: pointer;
+        height:100%;
+        color:blue;
+        list-style:none;
+        width:25%;
+      }
+    }
+  }
+}
+
+#header-search{
+  line-height:4em;
+  width:100%;
+  position:fixed;
+  top:0;
+  display:flex;
+  flex-direction: column;
+  z-index:1;
+  border-bottom: 1px solid grey;
+
+  #search-bar{
+    display: flex;
+    background-color: white;
+    font-size: 2em;
+
+  
+    .logo{
+      width:25%;
+      font-family: "Bungee", sans-serif;
+      font-display: swap;
+    }
+  
+    .search{
+      width:60%;
+
+      :first-child{
+        width:80%;
+        background-color: #f5f5f5cb;
+        border:1px solid black;
+        border-radius: 30px;
+      }
+    }
+  
+    .settings{
+      width:15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+#topics{
+  background-color: white;
+  font-size: 1.5em;
+  text-align:center;
+
+
+  ul{
+    display: flex;
+    margin:0;
+    padding:0;
+  
+    li{
+      list-style:none;
+      width:20%;
+      &:hover{
+        list-style:none;
+        width:20%;
+        height:100%;
+        background-color: cornsilk;
+        cursor:pointer;
+      }
+    }
+  }
+}
+
+.selected-topic{
+  border-bottom: 2px solid blue;
+  color:blue;
+}
+
+#write-tweet{
+  border-radius: 50px;
+  background-color: blue;
+  color:white;
+  position: fixed;
+  bottom:0;
+  right:0;
+  margin:3em 2em;
+  width:2em;
+  height:2em;
+  font-size: 2em;
+
+  &:hover{
+    background-color: cornflowerblue;
+    cursor: pointer;
+  }
+}
+
+.settings{
+  cursor: pointer;
+}
+
+#error-message{
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+
+.hidden {
+  display:none;
+}
+
+#goUp{
+  display: none;
+  position:fixed;
+  margin:2em;
+  width:4em;
+  height:4em;
+  bottom:0;
+  right:0;
+  padding:10px;
+  border-radius:50px;
+  background-color: branding.$primary-color;
+  color: #FFFFFF;
+
+  &:hover{
+    background-color: branding.$secondary-color;
+    cursor:pointer;
+  }
+}

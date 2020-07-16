@@ -1,0 +1,21 @@
+nav {
+  height: 120px;
+  background-color: #3d3d86;
+  color: #FFFFFF;
+  padding: 1.5em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+nav :first-child {
+  font-family: "Bungee", sans-serif;
+  font-display: swap;
+}
+nav :nth-child(2):hover {
+  cursor: pointer;
+  color: #b2b5ca;
+}
+
+/*# sourceMappingURL=nav.css.map */

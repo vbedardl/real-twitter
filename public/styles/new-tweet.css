@@ -1,0 +1,30 @@
+.new-tweet {
+  margin: 9em auto 1em;
+}
+.new-tweet form {
+  display: flex;
+  flex-direction: column;
+}
+.new-tweet textarea {
+  font-size: 1.5em;
+  font-weight: 700;
+  background: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 3px solid black;
+  padding: 1px;
+  height: 1.5em;
+}
+.new-tweet div {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Bungee", sans-serif;
+  font-display: swap;
+  margin: 1em 0;
+}
+.new-tweet button {
+  background-color: #3d3d86;
+  color: #FFFFFF;
+}
+
+/*# sourceMappingURL=new-tweet.css.map */

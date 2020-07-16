@@ -1,0 +1,23 @@
+@use 'branding';
+
+nav{
+  height:120px;
+  background-color: branding.$primary-color;
+  color:#FFFFFF;
+  padding:1.5em;
+  position: fixed;
+  top:0;
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+
+  :first-child{
+    font-family: branding.$secondary-font;
+    font-display: swap;
+  }
+
+  :nth-child(2):hover{
+    cursor:pointer;
+    color:branding.$secondary-color;
+  }
+}
