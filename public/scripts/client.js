@@ -176,16 +176,10 @@ const createTweetElement = function (tweet) {
         </div>
       </div>
     </div>
-<<<<<<< HEAD
     </article>
-    </form>`
-  return $tweet
-}
-=======
-    </article>`;
+    </form>`;
   return $tweet;
 };
->>>>>>> features/followButton
 
 const renderTweets = function (tweets) {
   let str = "";
