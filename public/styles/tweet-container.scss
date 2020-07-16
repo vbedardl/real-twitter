@@ -1,86 +1,89 @@
 @use 'branding';
 
-#tweet-container{
+#tweet-container {
   margin-top: 9em;
   margin-bottom: 3em;
 
-  article{
-    display:flex;
-    padding:0.5em 1em;
-    border:3px solid black;
+  article {
+    display: flex;
+    padding: 0.5em 1em;
+    border: 3px solid black;
     margin-bottom: 0.3em;
 
-    &:hover{
+    &:hover {
       box-shadow: 6px 6px branding.$secondary-color;
     }
 
-    .buble{
-      width:20%;
+    .buble {
+      width: 20%;
 
-      img{
-        width:5em;
-        height:5em;
+      img {
+        width: 5em;
+        height: 5em;
         border-radius: 50px;
-        border:1px solid black;
+        border: 1px solid black;
         margin-top: 1em;
       }
     }
 
-    .main{
-      display:flex;
+    .main {
+      display: flex;
       flex-direction: column;
-      width:80%;
+      width: 80%;
 
-      .header{
-        display:flex;
+      .header {
+        display: flex;
         justify-content: space-between;
-        height:2.5em;
-        margin:0.5em 0;
+        height: 2.5em;
+        margin: 0.5em 0;
         align-items: center;
-  
-        h3{
-          margin:0.5em 0;
-          font-size:2.5em;
-        }
-        .username{
-          color:branding.$secondary-color;
-          margin:0.5em 0;
-          font-size:1.5em;
 
+        button {
+          margin-left: 1.5rem;
+          font-size: 2.5rem;
         }
-  
-        div{
+
+        h3 {
+          margin: 0.5em 0;
+          font-size: 2.5em;
+        }
+        .username {
+          color: branding.$secondary-color;
+          margin: 0.5em 0;
+          font-size: 1.5em;
+        }
+
+        div {
           display: flex;
           align-items: center;
         }
       }
-      .content{
-        h6{
-          margin:0.5em 0;
+      .content {
+        h6 {
+          margin: 0.5em 0;
           font-size: 1.5em;
         }
       }
-      .footer{
-        border-top:3px solid black;
-        display:flex;
-        flex-direction:row;
-        justify-content:space-between;
+      .footer {
+        border-top: 3px solid black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        height:1.5em;
+        height: 1.5em;
         font-size: 1.5em;
 
-  
-        :nth-child(2){
-          display:flex;
-          width:60%;
+        :nth-child(2) {
+          display: flex;
+          width: 60%;
           justify-content: space-around;
-  
+
           i {
             color: branding.$primary-color;
-            &:hover{
-              color:red;
+            &:hover {
+              color: red;
             }
-          }        
+          }
         }
       }
     }
