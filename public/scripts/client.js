@@ -66,18 +66,18 @@ $(document).ready(function () {
   });
 });
 
-// $(function(){
-//   $("#searchEngine").on('click', function(e){
-//     e.preventDefault()
-//     var form = $('#searchBar')
-//     var formData = $(form).serialize()
-//     let url = $(form).attr('action')
-//     $.ajax(url, { method: 'GET', data: formData })
-//     .done(function(data){
-//         console.log(data)
-//     })
-//   })
-// })
+$(function(){
+  $("#searchEngine").on('click', function(e){
+    e.preventDefault()
+    var form = $('#searchBar')
+    var formData = $(form).serialize()
+    let url = $(form).attr('action')
+    $.ajax(url, { method: 'GET', data: formData })
+    .done(function(data){
+        console.log(data)
+    })
+  })
+})
 
 const chrono = function (number) {
   let result = "";

@@ -38,9 +38,9 @@ router.post('/', (req, res) => {
 
 //GET A SPECIFIC TWEET BY ID
 router.get('/:id', (req, res) => {
-  const tweet = getTweetById(req.params, db)
-
-  res.render('tweet_page', {tweet, tweet})
+  const tweet = getTweetById(req.params.id, db)
+  console.log(tweet)
+  res.render('tweet_page', {tweet: tweet})
 })
 
 module.exports = router
