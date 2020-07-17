@@ -74,6 +74,7 @@ $(function(){
     let url = $(form).attr('action')
     $.ajax(url, { method: 'GET', data: formData })
     .done(function(data){
+      renderTweets(data)
         console.log(data)
     })
   })
@@ -128,10 +129,9 @@ $(function () {
   });
 });
 
+
 const loadTweets = function () {
-  $.ajax("http://localhost:8080/tweets", { method: "GET" }).done(function (
-    data
-  ) {
+  $.ajax("http://localhost:8080/tweets", { method: "GET" }).done(function (data) {
     renderTweets(data);
   });
 };

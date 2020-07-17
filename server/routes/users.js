@@ -81,7 +81,7 @@ router.post('/following/:id', (req, res) => {
 
 router.get('/search', (req, res) => {
   const tweets = searchEngineTweets(req.query.q, db)
-  res.send(tweets)
+  res.json(tweets)
 })
 
 
