@@ -37,14 +37,9 @@ router.post("/", (req, res) => {
 
 //GET A SPECIFIC TWEET BY ID
 router.get("/:id", (req, res) => {
-  const user = users[req.session.user]
-    ? users[req.session.user]
-    : userHelper.generateRandomUser();
-
-  console.log("body: ", req.session.user);
-  const tweet = getTweetById(req.params, db);
-
-  res.render("tweet_page", { user: user, tweet: tweet });
+  const tweet = getTweetById(req.params.id, db);
+  console.log(tweet);
+  res.render("tweet_page", { tweet: tweet });
 });
 
 module.exports = router;

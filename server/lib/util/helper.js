@@ -19,7 +19,46 @@ const getUserById = function(id, database) {
 };
 
 const getTweetById = function(tweetId, db){
-  const tweet = Object.keys(db.tweets).filter(tweet => db.tweets[tweet].id === tweetId)
-  return db.tweets[tweet]
+  const tweet = db.tweets.filter(tweet => tweet.content.id === tweetId)
+  return tweet[0]
 }
-module.exports = { generateRandomString, getUserByEmail, getTweetById, getUserById }
+
+const searchEngineUser = function(){
+  const searchUsersArray = db.tweets
+  .map(tweet => {
+    return JSON.stringify({name:tweet.user.name, username: tweet.user.handle, id:tweet.user.id})
+  })
+  .filter(elm => elm.includes(query))
+  .map(elm => {
+    return JSON.parse(elm).id
+  })
+  const finalData = []
+  searchUsersArray.forEach(elm=>{
+    finalData.push(getUserById(elm, db))
+  })
+  return finalData
+}
+
+const searchEngineTweets = function(query, db){
+  const searchTweetsArray = db.tweets
+  .map(tweet => {
+    return JSON.stringify({text:tweet.content.text, id: tweet.content.id})
+  })
+  .filter(elm => elm.includes(query))
+  .map(elm => {
+    return JSON.parse(elm).id
+  })
+  const finalData = []
+  searchTweetsArray.forEach(elm=>{
+    finalData.push(getTweetById(elm, db))
+  })
+  return finalData
+}
+module.exports = { 
+  generateRandomString, 
+  getUserByEmail, 
+  getTweetById, 
+  getUserById,
+  searchEngineTweets,
+  searchEngineUser
+}
