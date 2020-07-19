@@ -70,18 +70,35 @@ router.post('/user', (req, res) => {
   }
 })
 
-//FOLLOW NEW USER
-router.post('/following/:id', (req, res) => {
-  const user = getUserById(req.session.user, users)
-  const target = getUserById(req.params, users)
-  user.follows(target)
-  console.log(user)
-  res.status(201).send();
-})
+// //FOLLOW NEW USER
+// router.post('/following/:id', (req, res) => {
+//   const user = getUserById(req.session.user, users)
+//   const target = getUserById(req.params, users)
+//   user.follows(target)
+//   console.log(user)
+//   res.status(201).send();
+// })
 
 router.get('/search', (req, res) => {
   const tweets = searchEngineTweets(req.query.q, db)
   res.json(tweets)
+})
+
+// //GET USER PROFILE
+router.get('/user/:id', (req, res)=> {
+  const user = getUserById(req.params.id, users)
+  console.log('showing user profile')
+  res.render('user_profile', {user: user} )
+})
+
+//FOLLOW NEW USER
+router.post('/following/:id', (req, res) => {
+  const user = getUserById(req.session.user, users)
+  const target = getUserById(req.params.id, users)
+
+  user.startFollows(target.id)
+  console.log(`${user.name} is Following ${target.name}`)
+  res.status(201).send();
 })
 
 

@@ -66,20 +66,18 @@ $(document).ready(function () {
   });
 });
 
-$(function(){
-  $("#searchEngine").on('click', function(e){
-    e.preventDefault()
-    var form = $('#searchBar')
-    var formData = $(form).serialize()
-    let url = $(form).attr('action')
-    $.ajax(url, { method: 'GET', data: formData })
-    .done(function(data){
-      renderTweets(data)
-        console.log(data)
-    })
-  })
-})
-
+$(function () {
+  $("#searchEngine").on("click", function (e) {
+    e.preventDefault();
+    var form = $("#searchBar");
+    var formData = $(form).serialize();
+    let url = $(form).attr("action");
+    $.ajax(url, { method: "GET", data: formData }).done(function (data) {
+      renderTweets(data);
+      console.log(data);
+    });
+  });
+});
 
 const chrono = function (number) {
   let result = "";
@@ -130,9 +128,10 @@ $(function () {
   });
 });
 
-
 const loadTweets = function () {
-  $.ajax("http://localhost:8080/tweets", { method: "GET" }).done(function (data) {
+  $.ajax("http://localhost:8080/tweets", { method: "GET" }).done(function (
+    data
+  ) {
     renderTweets(data);
   });
 };
@@ -143,19 +142,32 @@ const escape = function (str) {
   return div.innerHTML;
 };
 
+$(document).ready(() => {
+  $(document).on("click", "article", function (event) {
+    $.ajax(`/tweets/${this.id}`, {method:'GET'});
+  });
+});
+
 const createTweetElement = function (tweet) {
   const { user, content, created_at } = tweet;
   const $tweet = `
   <form method="GET" action="/tweets/${content.id}">
-    <article id="${content.id}" onclick="javascript:this.parentNode.submit();">
+  <a href="/tweets/${
+    content.id
+  }" style="text-decoration: none; font-color: inherit">
+    <article id="${content.id}">
     <div class="buble">
+    <a href="/user/${user.id}">
       <img style="border-radius:50px;" height="64px"src="${user.avatars}">
+      </a>
     </div>
     <div class="main">
       <div class="header">
         <div class="header-left">
           <h3>${user.name}</h3>
-            <button class="follow" data-userid="${user.id}"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
+            <button class="follow" data-userid="${
+              user.id
+            }"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
         </div>
         <div class="header-right"
           <h5 class="username">${user.handle}</h5>
@@ -171,11 +183,12 @@ const createTweetElement = function (tweet) {
         <div>
           <i class="fa fa-comments-o" aria-hidden="true"></i>
           <i class="fa fa-retweet" aria-hidden="true"></i>
-          <i class="fa fa-heart" aria-hidden="true"></i>
+          <button class='like' data-tweetid="${content.id}"><i class="fa fa-heart" aria-hidden="true"></i></button>
         </div>
       </div>
     </div>
     </article>
+    </a>
     </form>`;
   return $tweet;
 };
@@ -189,13 +202,25 @@ const renderTweets = function (tweets) {
   $("#tweet-container").html(str);
 };
 
-$(function(){
-  $('.follow').on('click', function(e){
-    e.stopPopragation()
-    const id = this.attr('data-userid')
-    $.ajax(`/following/${id}`, {method: 'POST'})
-    .done(function(data){
-      console.log(data)
-    })
-  })
-})
+// //FOLLOW AJAX REQUEST
+$(function () {
+  $(document).on("click", ".follow", function (e) {
+    e.preventDefault();
+    e.stopPropagation()
+
+    const id = $(this).attr("data-userid");
+    const url = `/following/${id}`
+    $.ajax(url, { method: "POST" })
+  });
+});
+
+// //LIKE AJAX REQUEST 
+$(function () {
+  $(document).on("click", ".like", function (e) {
+    e.preventDefault();
+    e.stopPropagation()
+    const id = $(this).attr("data-tweetid");
+    const url = `/tweets/like/${id}`
+    $.ajax(url, { method: "POST" })
+  });
+});

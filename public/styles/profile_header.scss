@@ -1,0 +1,23 @@
+.profile_header{
+    width:100%;
+    position:fixed;
+    top:0;
+    display:flex;
+    z-index:1;
+    border-bottom: 1px solid grey;
+    font-size:12px;
+
+    :first-child{
+      width:30%;
+      padding:1em;
+    }
+
+    :nth-child(2){
+      display:flex;
+      flex-direction: column;
+
+      p{
+        margin:0 0;
+      }
+    }
+}

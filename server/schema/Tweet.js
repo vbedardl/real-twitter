@@ -8,10 +8,10 @@ class TwitterObj {
     this.createdAt = Date.now(),
     this.comments = [],
     this.retweets = 0,
-    this.likes = {}
+    this.likes = []
   }
   likesIt(user){
-    this.likes[user.id] = user
+    this.likes.push(user)
   }
   commentsIt(user, comment){
     this.comments.push({user:user, comment:comment})
