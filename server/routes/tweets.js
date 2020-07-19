@@ -32,6 +32,7 @@ router.post("/", (req, res) => {
     content: theTweet,
     created_at: Date.now(),
   };
+  // user.addTweet(theTweet)
   db.tweets.push(tweet);
   res.status(201).send();
 });
