@@ -129,7 +129,8 @@ $(function () {
 });
 
 const loadTweets = function () {
-  $.ajax("http://localhost:8080/tweets", { method: "GET" }).done(function (
+  const url = '/tweets'
+  $.ajax(url, { method: "GET" }).done(function (
     data
   ) {
     renderTweets(data);
@@ -142,13 +143,13 @@ const escape = function (str) {
   return div.innerHTML;
 };
 
-$(document).ready(() => {
-  $(document).on("click", "article", function (event) {
-    console.log("this:", this.id);
-    console.log("event:", event.target);
-    $.ajax(`/tweets/${this.id}`);
-  });
-});
+// $(document).ready(() => {
+//   $(document).on("click", "article", function (event) {
+//     console.log("this:", this.id);
+//     console.log("event:", event.target);
+//     $.ajax(`/tweets/${this.id}`);
+//   });
+// });
 
 const createTweetElement = function (tweet) {
   const { user, content, created_at } = tweet;
@@ -159,7 +160,9 @@ const createTweetElement = function (tweet) {
   }" style="text-decoration: none; font-color: inherit">
     <article id="${content.id}">
     <div class="buble">
+    <a href="/user/${user.id}">
       <img style="border-radius:50px;" height="64px"src="${user.avatars}">
+      </a>
     </div>
     <div class="main">
       <div class="header">
@@ -183,7 +186,7 @@ const createTweetElement = function (tweet) {
         <div>
           <i class="fa fa-comments-o" aria-hidden="true"></i>
           <i class="fa fa-retweet" aria-hidden="true"></i>
-          <i class="fa fa-heart" aria-hidden="true"></i>
+          <button class="like" data-tweetid="${content.id}"><i class="fa fa-heart" aria-hidden="true"></i></button>
         </div>
       </div>
     </div>
@@ -206,8 +209,17 @@ $(function () {
   $(document).on("click", ".follow", function (e) {
     e.preventDefault();
     const id = $(this).attr("data-userid");
-    $.ajax(`/following/${id}`, { method: "POST" }).done(function (data) {
-      console.log(data);
-    });
+    const url = `/following/${id}`
+    $.ajax(url, { method: "POST" })
   });
 });
+
+//LIKE AJAX REQUEST NOT WORKING..NOT SURE WHY
+// $(function () {
+//   $(document).on("click", ".like", function (e) {
+//     e.preventDefault();
+//     const id = $(this).attr("data-tweetid");
+//     const url = `/like/${id}`
+//     $.ajax(url, { method: "POST" })
+//   });
+// });

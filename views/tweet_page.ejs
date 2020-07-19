@@ -21,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
-    <script type="module" src="scripts/client.js"></script>
+    <script type="module" src="/scripts/client.js"></script>
   </head>
 
   <body>
@@ -35,6 +35,7 @@
       <% if(!user.id){%>
         <%- include('partials/footer_disconnected') %>
       <%}else{%>
+        <p><%= tweet.content.text %></p>
           <button id="write-tweet">+</button>
         <%- include('partials/footer_connected') %>
       <%}%>
