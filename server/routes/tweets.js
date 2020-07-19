@@ -7,7 +7,7 @@ const { users } = require("../data-files/usersDB");
 const { tweets } = require("../data-files/tweetsDB");
 const db = require("../lib/in-memory-db");
 const TwitterObj = require("../schema/Tweet");
-const { getTweetById } = require("../lib/util/helper");
+const { getTweetById, getUserById } = require("../lib/util/helper");
 
 //GET LIST OF TWEETS
 router.get("/", (req, res) => {
@@ -48,10 +48,8 @@ router.get("/:id", (req, res) => {
 //LIKE A TWEET
 router.post("/like/:id", (req, res) => {
   const user = getUserById(req.session.user, users)
-  console.log('user:',user)
-  const tweet = getTweetById(req.params.id, tweets)
-  console.log('tweet:',tweet)
-  tweet.likesIt(user)
+  const tweet = getTweetById(req.params.id, db)
+  tweet.content.likesIt(user)
   console.log(tweet)
 res.status(201).send
 })

@@ -205,6 +205,7 @@ const renderTweets = function (tweets) {
   $("#tweet-container").html(str);
 };
 
+//FOLLOW AJAX REQUEST
 $(function () {
   $(document).on("click", ".follow", function (e) {
     e.preventDefault();
@@ -214,12 +215,12 @@ $(function () {
   });
 });
 
-//LIKE AJAX REQUEST NOT WORKING..NOT SURE WHY
-// $(function () {
-//   $(document).on("click", ".like", function (e) {
-//     e.preventDefault();
-//     const id = $(this).attr("data-tweetid");
-//     const url = `/like/${id}`
-//     $.ajax(url, { method: "POST" })
-//   });
-// });
+//LIKE AJAX REQUEST 
+$(function () {
+  $(document).on("click", ".like", function (e) {
+    e.preventDefault();
+    const id = $(this).attr("data-tweetid");
+    const url = `/tweets/like/${id}`
+    $.ajax(url, { method: "POST" })
+  });
+});
