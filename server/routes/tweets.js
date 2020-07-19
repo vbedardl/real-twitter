@@ -7,6 +7,19 @@ const { users } = require("../data-files/usersDB");
 const db = require("../lib/in-memory-db");
 const TwitterObj = require("../schema/Tweet");
 const { getTweetById } = require("../lib/util/helper");
+const bodyParser = require("body-parser");
+
+router.use(bodyParser.urlencoded({ extended: true }));
+
+//GET A SPECIFIC TWEET BY ID
+router.get("/:id", (req, res) => {
+  const user = users[req.session.user]
+    ? users[req.session.user]
+    : userHelper.generateRandomUser();
+  const tweet = getTweetById(req.params.id, db);
+  console.log("template vars tweet: ", tweet);
+  res.render("tweet_page", { user: user, tweet: tweet });
+});
 
 //GET LIST OF TWEETS
 router.get("/", (req, res) => {
@@ -33,16 +46,6 @@ router.post("/", (req, res) => {
   };
   db.tweets.push(tweet);
   res.status(201).send();
-});
-
-//GET A SPECIFIC TWEET BY ID
-router.get("/:id", (req, res) => {
-  const user = users[req.session.user]
-    ? users[req.session.user]
-    : userHelper.generateRandomUser();
-  const tweet = getTweetById(req.params.id, db);
-  console.log("tweet: ", tweet);
-  res.render("tweet_page", { user: user, tweet: tweet });
 });
 
 module.exports = router;

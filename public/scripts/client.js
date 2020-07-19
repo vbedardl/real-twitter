@@ -146,7 +146,10 @@ $(document).ready(() => {
   $(document).on("click", "article", function (event) {
     console.log("this:", this.id);
     console.log("event:", event.target);
-    $.ajax(`/tweets/${this.id}`);
+    // // $.ge(`/tweets/${this.id}`, );
+    // $.ajax(`/tweets/${this.id}`, { method: "GET" }).done(function (data) {
+    //   console.log(data);
+    // });
   });
 });
 
