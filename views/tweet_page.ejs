@@ -35,7 +35,11 @@
       <% if(!user.id){%>
         <%- include('partials/footer_disconnected') %>
       <%}else{%>
+<<<<<<< HEAD
         <h1><%= tweet.content.text %></h1>
+=======
+        <p><%= tweet.content.text %></p>
+>>>>>>> 76fdf0a38527c2574b3a41af766248354464ccff
           <button id="write-tweet">+</button>
         <%- include('partials/footer_connected') %>
       <%}%>

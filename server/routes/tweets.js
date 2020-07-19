@@ -4,6 +4,7 @@ const userHelper = require("../lib/util/user-helper");
 const express = require("express");
 const router = express.Router();
 const { users } = require("../data-files/usersDB");
+const { tweets } = require("../data-files/tweetsDB");
 const db = require("../lib/in-memory-db");
 const TwitterObj = require("../schema/Tweet");
 const { getTweetById, getUserById } = require("../lib/util/helper");
@@ -32,6 +33,7 @@ router.post("/", (req, res) => {
     content: theTweet,
     created_at: Date.now(),
   };
+  // user.addTweet(theTweet)
   db.tweets.push(tweet);
   console.log('Posting a new tweet')
   res.status(201).send();

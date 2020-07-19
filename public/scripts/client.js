@@ -129,7 +129,8 @@ $(function () {
 });
 
 const loadTweets = function () {
-  $.ajax("http://localhost:8080/tweets", { method: "GET" }).done(function (
+  const url = '/tweets'
+  $.ajax(url, { method: "GET" }).done(function (
     data
   ) {
     renderTweets(data);
