@@ -70,11 +70,19 @@ router.post('/user', (req, res) => {
   }
 })
 
+//GET USER PROFILE
+router.get('/user/:id', (req, res)=> {
+  const user = getUserById(req.params.id, users)
+  console.log(user)
+  res.render('user_profile', {user: user} )
+})
+
 //FOLLOW NEW USER
 router.post('/following/:id', (req, res) => {
   const user = getUserById(req.session.user, users)
-  const target = getUserById(req.params, users)
-  user.follows(target)
+  const target = getUserById(req.params.id, users)
+
+  user.startFollows(target)
   console.log(user)
   res.status(201).send();
 })

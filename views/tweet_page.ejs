@@ -36,6 +36,7 @@
       <% if(!user.id){%>
         <%- include('partials/footer_disconnected') %>
       <%}else{%>
+        <p><%= tweet.content.text %></p>
           <button id="write-tweet">+</button>
         <%- include('partials/footer_connected') %>
       <%}%>
